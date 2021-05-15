@@ -1,0 +1,26 @@
+Commands of GIT
+===============================================
+
+git status => {to see status of git repository}
+
+git init => {to initialize git repositary.}
+
+git remote add origin <ORIGIN-URL> => {to add remote origin.}
+
+git add . => {to add or stage all the changes in git respository.}
+
+git commit -m "COMMIT MSG" => {to commit the changes on git branch.}
+
+git push origin <BRANCH-NAME> => {To PUSH the code into a perticular branch}
+
+git checkout -b <NEW-BRACH-NAME> => {to make a new branch and save the existing code.}
+
+git fetch => {used to fetch the changes like adding new branch}
+
+git pull origin <BRANCH-NAME> => {To take PULL from a perticular branch}
+
+git merge <BRANCH-NAME> => {to merge the code of one branch to another.}
+
+git reset --hard HEAD^  =>  {to revert back 1 commit (^ denotes number of commit) }
+
+git status => { To see status of repository i.e. commit/uncommit files }
