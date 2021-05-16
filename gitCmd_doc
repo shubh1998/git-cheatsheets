@@ -1,26 +1,126 @@
+GIt Basics
+----------------------------------------------------------------------------------------------------------
+1. Green files means files are staged
+2. Red files means files are unstaged
+3. New files that we added are unknow as untracked files need to add first to track file.
+
+
+==========================================================================================================
 Commands of GIT
-===============================================
+==========================================================================================================
 
-git status => {to see status of git repository}
+git status => {To see status of repository i.e. commit/uncommit files}
 
-git init => {to initialize git repositary.}
+git init => {To initialize git repositary.}
 
-git remote add origin <ORIGIN-URL> => {to add remote origin.}
+git remote add origin <ORIGIN-URL> => {To add remote origin.}
 
-git add . => {to add or stage all the changes in git respository.}
+git remote -v => {To see remote origin url}
 
-git commit -m "COMMIT MSG" => {to commit the changes on git branch.}
+git branch => {To see branches of git}
+
+git branch --merged => {To see merged branches}
+
+git branch --no-merged => {To see unmerged branches}
+
+git branch -M <NEW_NAME> => {To rename a branch name}
+
+git add . => {To add or stage all the changes in git respository.}
+
+git add <FILE> => {To add or stage individual file changes in git respository.}
+
+git commit -m "COMMIT MSG" => {To commit the changes on git branch.}
+
+git commit -a -m "<COMMIT-MSG>" => {To do direct commit for tracked files without adding them into staging era
+                                    (NOTE: - Untracked i.e. new files can't be directly commited using this cmd)}
+
+git commit --amend -m "<COMMIT-MSG>" => {To update commit message of previous commit}
+
+git commit --amend => {To append the changes into previous commit}
 
 git push origin <BRANCH-NAME> => {To PUSH the code into a perticular branch}
 
-git checkout -b <NEW-BRACH-NAME> => {to make a new branch and save the existing code.}
+git checkout -b <NEW-BRACH-NAME> => {To make a new branch by saving the existing code.}
+
+git checkout . => {To undo or discard all the changes of all the files that is in unstage era}
+
+git checkout -- <FILE_NAME or RELATIVE_PATH> => {To get a individual file from previous commit}
+
+git checkout <COMMIT_SSH> -- <FILE_NAME or RELATIVE_PATH> => {To get a individual file from the selected commit}
+
+git checkout <FILE> => {To undo all the changes of individual file that is in unstage era}
+
+git checkout <BRANCH_NAME || COMMIT_SSH> => {To switch or checkout from one branch to another or to checkout into specific commit using ssh id}
 
 git fetch => {used to fetch the changes like adding new branch}
 
 git pull origin <BRANCH-NAME> => {To take PULL from a perticular branch}
 
-git merge <BRANCH-NAME> => {to merge the code of one branch to another.}
+git merge <BRANCH-NAME> => {To merge the code of one branch to another.}
 
-git reset --hard HEAD^  =>  {to revert back 1 commit (^ denotes number of commit) }
+git reset . => {To reset or move all files from stage to unstage stage}
 
-git status => { To see status of repository i.e. commit/uncommit files }
+git reset <FILE> => {To reset or move individual file from stage to unstage state} 
+
+// # Difference between git reset and git revert :- https://www.youtube.com/watch?v=ipav1TCV8BI
+
+// *NOTE : Git reset works locally finr when commits are not pushed but if commits are pushed and we us this command to undo commit it actually chamge
+    branch history and you need to do force push to push code that is not fair. 
+git reset --hard HEAD~<NUMBER>  =>  {To undo the commit which is not pushed yet (doesn't keeps file changes and undo commit from history)}
+
+git reset HEAD~<NUMBER> => {To undo the commit which is not pushed yet (Keeps file changes just undo commit from history)
+                            Here NUMBER denotes the number of commit like if you use this cmd - "git reset HEAD~1" , it 
+                            undo the last commit.}
+
+// *NOTE : To undo pushed commits from local to remote we use revert command. It is the standard way and helps to maintain clear branch history.
+git revert <COMMIT_SSH> => {{To undo the commit which is pushed.}
+
+
+git diff => {To compare the working directory to staged directory}
+
+git diff --staged => {To compare staged changes to previous commit}
+
+git rm <FILE> => {To remove or delete a file or folder directly by using git cmd. It helps you to add this changes 
+                    automatically in staging era}
+
+git mv <ORIGINAL_FILE_NAME> <RENAMED_FILE_NAME> => {To rename a file or folder name directly by using git cmd. 
+                                                    It helps you to add this changes automatically in staging era}
+
+git rm --cached <FILE> => {To remove a file from tracked files i.e. making a file untracked}
+
+git clone <BRANCH_URL> => {To clone a branch on your local system}
+
+git clone <BRANCH_URL> <FOLDER_NAME> => {To clone a branch on your local system By renaming folder according to 
+                                        you that is specified in cmd}
+
+git log --stat => {To see summary of commits that we done}
+
+git log --pretty=<FLAG(oneline/short/full)> => {To see all commits summary including sha Id}
+
+git log --since=<NUMBER>.<days/weeks/months/years> => {To Apply filter on git logs according to days/weeks/months/years}
+
+gitk => {To see the full history of a branch of git}
+
+git stash save => {To save the unstaged changes locally by adding them into temprory storage without affecting other code}
+
+git stash save -u => {To save tracked and untracked files changes locally by adding them into temprory storage without affecting other code}
+
+git stash pop => {To reapply changes on the code that are made up previously by saving in stash}
+
+git stash list => {To see list of stash. You aren't limited to a single stash. You can run git stash several times to create multiple stashes.}
+
+git stash pop stash@{NUMBER} => {To pop an individual stash from stash list. here NUMBER denotes stash index}
+
+git stash clear => {To clear the stash}
+
+git branch -d <LOCAL_BRANCH_NAME> => {To delete branch locally}
+
+git push -d origin <REMOTE_BRANCH_NAME> => {To delete branch remotely}
+
+git rebase <BRANCH_NAME> => {To rebase a branch from one to another (rebase means setting up a base again for branch.
+                            this command is used when we want to put our commit ahead to next branch in which we merge our code)}
+
+git rebase --continue => {To continue rebase process}
+
+git rebase --abort => {To end or abort the rebase process}
+
